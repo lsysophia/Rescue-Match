@@ -6,13 +6,17 @@ class ApiController < ApplicationController
     end
 
     def current_user
-        @current_user ||= authenticate_token
+        if @current_user
+            @current_user
+        else
+            authenticate_token
+        end
     end
 
     protected
 
     def render_unauthorized(message)
-        errors = { errors: [ detail: message ]}
+        errors = { errors: [ detail: message ] }
         render json: errors, status: :unauthorized
     end
 

@@ -6,15 +6,34 @@ class UsersController < ApiController
     render json: { token: user.auth_token }
   end
 
-  def profile
+  def show
     user = User.find_by!(auth_token: request.headers[:token])
-    # user_pets = user.pet_user
-    render json: { user: { username: user.username, email: user.email, name: user.name } }
-    # , pets: user_pets
+    render json: {
+        user: user
+    }
   end
 
+  def profile
+    user = User.find_by!(auth_token: request.headers[:token])
+    user_pets = PetUser.where(user_id: user.id)
+    render json: { 
+        user: user,
+        pets: user_pets
+    }
+    end
+
+#   def update
+#     @current_user.update(user_params)
+    
+#     render json: {
+#         user: 
+#     }
+#     end
+
   private
+
   def user_params
-    params.require(:user).permit(:username, :email, :password, :name)
+    params.require(:user).permit(:username, :email, :password, :name, :zipcode, :has_cats, :has_dogs, :has_child, :has_yard)
   end
+
 end
