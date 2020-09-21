@@ -274,3 +274,212 @@ Processing by UsersController#create as */*
 Completed 200 OK in 277ms (Views: 0.2ms | ActiveRecord: 22.9ms | Allocations: 4195)
 
 
+Started GET "/" for 127.0.0.1 at 2020-09-20 12:52:56 -0500
+  [1m[35m (7.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/sophiali/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.0.3.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/sophiali/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/railties-6.0.3.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.1ms | Allocations: 309)
+Completed 200 OK in 17ms (Views: 13.0ms | ActiveRecord: 0.0ms | Allocations: 1619)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2020-09-20 12:52:56 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.3.3) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.3) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.3) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.3) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.3) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.3) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/users" for 127.0.0.1 at 2020-09-20 13:50:58 -0500
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"data"=>nil}}
+[31mUnpermitted parameter: :data[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+Completed 422 Unprocessable Entity in 60ms (ActiveRecord: 10.4ms | Allocations: 14454)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Password can't be blank):
+  
+app/controllers/users_controller.rb:5:in `create'
+Started POST "/users" for 127.0.0.1 at 2020-09-20 13:54:02 -0500
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 135)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:36:in `user_params'
+app/controllers/users_controller.rb:5:in `create'
+Started POST "/users" for 127.0.0.1 at 2020-09-20 13:57:08 -0500
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 132)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:36:in `user_params'
+app/controllers/users_controller.rb:5:in `create'
+Started POST "/users" for 127.0.0.1 at 2020-09-20 14:00:15 -0500
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"cat", "password"=>"[FILTERED]", "email"=>"cat@cat", "name"=>"June", "zipcode"=>"60645", "has_cats"=>false, "has_dogs"=>false, "has_child"=>false, "has_yard"=>false}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "cat"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "auth_token", "name", "zipcode", "has_cats", "has_dogs", "has_child", "has_yard", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["username", "cat"], ["password_digest", "$2a$12$M3n4z5MXbZB4OXJi6N1/iOWJ8VVgoCUuV7e9Y8UvxQffSVO818LvW"], ["email", "cat@cat"], ["auth_token", "aezdLDCuVKYQGHKHHx6M66Vw"], ["name", "June"], ["zipcode", 60645], ["has_cats", false], ["has_dogs", false], ["has_child", false], ["has_yard", false], ["created_at", "2020-09-20 19:00:15.946036"], ["updated_at", "2020-09-20 19:00:15.946036"]]
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+Completed 200 OK in 226ms (Views: 0.3ms | ActiveRecord: 3.9ms | Allocations: 4216)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-09-20 14:04:40 -0500
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"g", "password"=>"[FILTERED]", "email"=>"g@g.com", "name"=>"g", "zipcode"=>"12345", "has_cats"=>false, "has_dogs"=>false, "has_child"=>false, "has_yard"=>false}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "g"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "auth_token", "name", "zipcode", "has_cats", "has_dogs", "has_child", "has_yard", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["username", "g"], ["password_digest", "$2a$12$KNiWWN3wokRaZ70Ry52.wO1X9Ggmff/riKXG.yAqrjJnLhezsn46K"], ["email", "g@g.com"], ["auth_token", "Pcp8NCMu1hK6wzJRLDXdYnhr"], ["name", "g"], ["zipcode", 12345], ["has_cats", false], ["has_dogs", false], ["has_child", false], ["has_yard", false], ["created_at", "2020-09-20 19:04:40.426560"], ["updated_at", "2020-09-20 19:04:40.426560"]]
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+Completed 200 OK in 240ms (Views: 0.2ms | ActiveRecord: 6.4ms | Allocations: 3976)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-09-20 14:10:37 -0500
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"k", "password"=>"[FILTERED]", "email"=>"k@k.com", "name"=>"k", "zipcode"=>"08249", "has_cats"=>false, "has_dogs"=>false, "has_child"=>false, "has_yard"=>false}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "k"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "auth_token", "name", "zipcode", "has_cats", "has_dogs", "has_child", "has_yard", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["username", "k"], ["password_digest", "$2a$12$OmOiaMVjjKKK8g0htMSaLuon2bLVEhYwD04u8AnSAjz3DiB..jsPy"], ["email", "k@k.com"], ["auth_token", "oAX8bZmQWRS9f5cUgM9jNYJ2"], ["name", "k"], ["zipcode", 8249], ["has_cats", false], ["has_dogs", false], ["has_child", false], ["has_yard", false], ["created_at", "2020-09-20 19:10:38.117400"], ["updated_at", "2020-09-20 19:10:38.117400"]]
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+Completed 200 OK in 230ms (Views: 0.2ms | ActiveRecord: 7.7ms | Allocations: 4003)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-09-20 14:20:34 -0500
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"t", "password"=>"[FILTERED]", "email"=>"t@t.com", "name"=>"t", "zipcode"=>"60635", "has_cats"=>true, "has_dogs"=>false, "has_child"=>false, "has_yard"=>true}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "t"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "auth_token", "name", "zipcode", "has_cats", "has_dogs", "has_child", "has_yard", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["username", "t"], ["password_digest", "$2a$12$TTJuiSOgPV2ow2kWn5bRUehj7ilhiZ.riSaaLHAcaxWXBwP0xzHxa"], ["email", "t@t.com"], ["auth_token", "kyijxa9t9CA1eUjQGq44kwmu"], ["name", "t"], ["zipcode", 60635], ["has_cats", true], ["has_dogs", false], ["has_child", false], ["has_yard", true], ["created_at", "2020-09-20 19:20:34.501321"], ["updated_at", "2020-09-20 19:20:34.501321"]]
+  ↳ app/controllers/users_controller.rb:5:in `create'
+  [1m[35m (7.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:5:in `create'
+Completed 200 OK in 231ms (Views: 0.2ms | ActiveRecord: 9.0ms | Allocations: 4017)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2020-09-20 14:42:01 -0500
+Processing by SessionsController#destroy as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "kyijxa9t9CA1eUjQGq44kwmu"], ["LIMIT", 1]]
+  ↳ app/controllers/api_controller.rb:26:in `block in authenticate_token'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:8:in `invalidate_token'
+  [1m[36mUser Exists? (5.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "t"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:8:in `invalidate_token'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "auth_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["auth_token", nil], ["updated_at", "2020-09-20 19:42:01.333952"], ["id", 5]]
+  ↳ app/models/user.rb:8:in `invalidate_token'
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:8:in `invalidate_token'
+Completed 200 OK in 23ms (ActiveRecord: 8.5ms | Allocations: 4731)
+
+
+Started POST "/login" for 127.0.0.1 at 2020-09-20 16:05:48 -0500
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"", "password"=>"[FILTERED]", "session"=>{"username"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12:in `validate_login'
+Completed 401 Unauthorized in 14ms (Views: 0.3ms | ActiveRecord: 1.9ms | Allocations: 3630)
+
+
+Started POST "/login" for 127.0.0.1 at 2020-09-20 16:06:12 -0500
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"", "password"=>"[FILTERED]", "session"=>{"username"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12:in `validate_login'
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 733)
+
+
+Started POST "/login" for 127.0.0.1 at 2020-09-20 16:06:14 -0500
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"", "password"=>"[FILTERED]", "session"=>{"username"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12:in `validate_login'
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 733)
+
+
+Started POST "/login" for 127.0.0.1 at 2020-09-20 16:35:43 -0500
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"test", "password"=>"[FILTERED]", "session"=>{"username"=>"test", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12:in `validate_login'
+Completed 401 Unauthorized in 266ms (Views: 0.2ms | ActiveRecord: 3.6ms | Allocations: 9238)
+
+
+Started POST "/login" for 127.0.0.1 at 2020-09-20 16:35:52 -0500
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"cat", "password"=>"[FILTERED]", "session"=>{"username"=>"cat", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "cat"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12:in `validate_login'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/sessions_controller.rb:25:in `allow_token_to_be_used_only_once_for'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "cat"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:25:in `allow_token_to_be_used_only_once_for'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "auth_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["auth_token", "S15ah36rWvy7Wz7BZMkbkbiV"], ["updated_at", "2020-09-20 21:35:52.754487"], ["id", 2]]
+  ↳ app/controllers/sessions_controller.rb:25:in `allow_token_to_be_used_only_once_for'
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/sessions_controller.rb:25:in `allow_token_to_be_used_only_once_for'
+Completed 200 OK in 229ms (Views: 0.1ms | ActiveRecord: 8.9ms | Allocations: 4866)
+
+
+Started POST "/login" for 127.0.0.1 at 2020-09-20 19:17:22 -0500
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"cat", "password"=>"[FILTERED]", "session"=>{"username"=>"cat", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "cat"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12:in `validate_login'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/sessions_controller.rb:25:in `allow_token_to_be_used_only_once_for'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "cat"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:25:in `allow_token_to_be_used_only_once_for'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "auth_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["auth_token", "uE2GWFTqQ8QsHCwZdsQt316c"], ["updated_at", "2020-09-21 00:17:22.283759"], ["id", 2]]
+  ↳ app/controllers/sessions_controller.rb:25:in `allow_token_to_be_used_only_once_for'
+  [1m[35m (8.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/sessions_controller.rb:25:in `allow_token_to_be_used_only_once_for'
+Completed 200 OK in 238ms (Views: 0.2ms | ActiveRecord: 10.0ms | Allocations: 4554)
+
+
