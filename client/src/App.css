@@ -20,6 +20,105 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-body {
-  background-image: url("client/animal-shelter2.jpg");
+html{
+  min-height: 100vh;
 }
+
+body{
+  max-height: 100vh;
+  max-width: 100vw;
+}
+
+/* APP */
+.App{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Oswald', sans-serif;;
+}
+
+/* HEADER */
+header{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+header a{ 
+  text-decoration: none;
+}
+
+header .logo{
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+}
+
+nav li {
+  display: flex;
+  flex-direction: row;
+  color:goldenrod;
+  text-decoration: none;
+}
+
+header li{
+  text-transform: uppercase;
+  padding: 10px;
+  letter-spacing: 1px;
+}
+/*HEADER END
+
+/* CONTAINER START */
+.container{
+  display: flex;
+  flex:1;
+  justify-content: center;
+  max-width: 100vw; 
+  /* margin: 0 auto; */
+  padding: 2%;
+}
+/* CONTAINER END */
+
+/*HOME PAGE START*/
+.home-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  color: darkred;
+}
+
+.home-page a{
+  text-decoration: none;
+}
+
+.home-page .user-box {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+/*HOME PAGE END*/
+
+
+/*ANIMAL DISPLAY START*/
+.animal-box{
+  display: flex;
+  flex-direction: column;
+  max-width: 80vw;
+  max-height: 90vh;
+  align-items: center;
+  background-color: gainsboro;
+}
+
+.animal-box img{
+  max-width: 25vw;
+}
+/*ANIMAL DISPLAY END*/

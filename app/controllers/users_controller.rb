@@ -17,10 +17,10 @@ class UsersController < ApiController
     user = User.find_by!(auth_token: request.headers[:token])
     user_pets = PetUser.where(user_id: user.id)
     render json: { 
-        user: user,
+        user: { user_id: user.id, username: user.username, email: user.email, name: user.name, zipcode: user.zipcode, has_cats: user.has_cats, has_dogs: user.has_dogs, has_child: user.has_child, has_yard: user.has_yard },
         pets: user_pets
     }
-    end
+  end
 
 #   def update
 #     @current_user.update(user_params)

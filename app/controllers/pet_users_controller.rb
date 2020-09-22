@@ -6,18 +6,24 @@ class PetUsersController < ApiController
         render json: { pet_users: pet_users}
     end
 
-    def create
-        pet_user = PetUser.create(pet_user_params)
+    def show
+        pet_user = PetUser.find_by!(pet_user.id)
+        render json: {
+            pet_user: pet_user
+        }
+    end
 
-        if (pet_user) { 
+    def create
+        binding.pry
+        pet_user = PetUser.create!(pet_user_params)
+
+        if (pet_user)
             render json: { 
                 message: 'ok',
                 pet_user: pet_user
             }
-        }
-        else {
+        else
             render json: { message: 'Could not add pet'}
-        }
         end
     end
 

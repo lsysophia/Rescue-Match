@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import Auth from './modules/Auth'
 import { Route, Redirect } from 'react-router-dom'
 
+import './App.css'
 import Home from './components/Home'
 import Login from './components/Login'
 import Register from './components/Register'
 import Nav from './components/Nav'
-// import User from './components/User'
+import Profile from './components/Profile'
 // import Footer from './components/Footer'
 
 
@@ -28,13 +29,24 @@ class App extends Component {
       has_dogs: false,
       has_child: false,
       has_yard: false,
+      user: {},
+      user_id: '',
     }
+    this.resetFireRedirect = this.resetFireRedirect.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.toggleLoginRegister = this.toggleLoginRegister.bind(this)
     this.logout = this.logout.bind(this)
+    this.getUserDetails = this.getUserDetails.bind(this)
+    // this.handlePetSubmit = this.handlePetSubmit.bind(this)
+  }
+
+  resetFireRedirect() {
+    this.setState({
+      fireRedirect: !this.state.fireRedirect
+    })
   }
 
   handleInputChange(e) {
@@ -50,12 +62,10 @@ class App extends Component {
     this.setState({
         [checkedBox]: !this.state[checkedBox]
     })
-    debugger
   }
 
   handleRegisterSubmit(e) {
     e.preventDefault()
-    debugger
     fetch('/users', {
       method: 'POST',
       headers: {
@@ -109,6 +119,23 @@ class App extends Component {
       }).catch(err => console.log(err))
   }
 
+  getUserDetails() {
+    this.resetFireRedirect()
+    fetch('/profile', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Token ${Auth.getToken()}`,
+        token: `${Auth.getToken()}`,
+      }
+    }).then(res => res.json())
+    .then(res => {
+      console.log(res)
+      this.setState({
+        user: res.user
+      })
+    }).catch(err => console.log(err))
+  }
+
   logout() {
     fetch('/logout', {
       method: 'DELETE',
@@ -140,7 +167,7 @@ class App extends Component {
        <div className="container">
           <Route exact path='/'
             render={() => (
-              <Home userAuth={this.state.auth} userZipcode={this.state.zipcode}/>
+              <Home userAuth={this.state.auth} user={this.state.user} getUserDetails={this.getUserDetails} resetFireRedirect={this.resetFireRedirect}/>
             )}
           />
           <Route exact path='/login'
@@ -157,13 +184,13 @@ class App extends Component {
                 : <Register handleCheckboxChange = {this.handleCheckboxChange} handleInputChange = {this.handleInputChange} handleRegisterSubmit={this.handleRegisterSubmit} />
             )}
           />
-          {/* <Route exact path='/user'
+          <Route exact path='/users/profile'
             render={() => (
               !this.state.auth
                 ? <Redirect to='/login' />
-                : <User user={this.state.user} auth={this.state.auth} logout={this.logout} />
+                : <Profile user={this.state.user} getUserDetails = {this.getUserDetails} />
             )}
-          /> */}
+          />
 
           {/* <Route exact path='/user/edit'
             render={() => (
