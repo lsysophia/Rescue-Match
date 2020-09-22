@@ -14,9 +14,8 @@ class PetUsersController < ApiController
     end
 
     def create
-        binding.pry
         pet_user = PetUser.create!(pet_user_params)
-
+        # pet_user.user = current_user
         if (pet_user)
             render json: { 
                 message: 'ok',
@@ -25,6 +24,14 @@ class PetUsersController < ApiController
         else
             render json: { message: 'Could not add pet'}
         end
+    end
+
+    def destroy
+        pet_user = PetUser.find(params[:id])
+        # pet_user.user = current_user
+        pet_user.destroy
+
+        redirect_to pet_users_path
     end
 
     private

@@ -99,26 +99,52 @@ header li{
   text-decoration: none;
 }
 
-.home-page .user-box {
+.home-page .user-nav {
   display: flex;
   flex-direction: row;
   margin-left: 20px;
   margin-right: 20px;
 }
-/*HOME PAGE END*/
 
-
-/*ANIMAL DISPLAY START*/
-.animal-box{
+.home-page .animal-box{
   display: flex;
   flex-direction: column;
   max-width: 80vw;
-  max-height: 90vh;
+  height: 80vh;
   align-items: center;
   background-color: gainsboro;
+  font-size: 0.5em;
 }
 
 .animal-box img{
   max-width: 25vw;
 }
-/*ANIMAL DISPLAY END*/
+/*HOME PAGE END*/
+
+/*USER PROFILE START*/
+.profile-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 90vh;
+  width: 90vw;
+}
+
+.profile-page .user-info {
+  font-size: 1.1em;
+}
+
+.profile-page .display-animal {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 90vh;
+  overflow-y: scroll;
+}
+
+.profile-page .display-animal .li {
+  text-decoration: none;
+}
+
+
+/*USER PROFILE END*/

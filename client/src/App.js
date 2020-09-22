@@ -8,6 +8,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Nav from './components/Nav'
 import Profile from './components/Profile'
+import UserEdit from './components/UserEdit'
 // import Footer from './components/Footer'
 
 
@@ -30,6 +31,7 @@ class App extends Component {
       has_child: false,
       has_yard: false,
       user: {},
+      user_pets: [],
       user_id: '',
     }
     this.resetFireRedirect = this.resetFireRedirect.bind(this)
@@ -40,7 +42,7 @@ class App extends Component {
     this.toggleLoginRegister = this.toggleLoginRegister.bind(this)
     this.logout = this.logout.bind(this)
     this.getUserDetails = this.getUserDetails.bind(this)
-    // this.handlePetSubmit = this.handlePetSubmit.bind(this)
+    this.removeMatch = this.removeMatch.bind(this)
   }
 
   resetFireRedirect() {
@@ -119,8 +121,28 @@ class App extends Component {
       }).catch(err => console.log(err))
   }
 
+  handleUserEditSubmit(e, data, id) {
+    e.preventDefault()
+    fetch(`/users/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${Auth.getToken()}`,
+        token: `${Auth.getToken()}`,
+      },
+      body: JSON.stringify(data),
+    }).then(res => res.json())
+      .then(parsedRes => {
+        this.setState({
+          // fireRedirect: true,
+          // redirectPath: '/profile',
+          user: parsedRes.data.updatedUser,
+        })
+      }).catch(err => console.log(err))
+  }
+
   getUserDetails() {
-    this.resetFireRedirect()
+    // this.resetFireRedirect()
     fetch('/profile', {
       method: 'GET',
       headers: {
@@ -131,7 +153,8 @@ class App extends Component {
     .then(res => {
       console.log(res)
       this.setState({
-        user: res.user
+        user: res.user, 
+        user_pets: res.pets,
       })
     }).catch(err => console.log(err))
   }
@@ -160,6 +183,20 @@ class App extends Component {
     })
   }
 
+  removeMatch(id) {
+    // debugger
+    fetch(`/pet_users/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${Auth.getToken()}`,
+        token: Auth.getToken(),
+      },
+    }).then(() => {
+      this.getUserDetails()
+    })
+  }
+
   render() {
     return (
     <div className="App">
@@ -173,14 +210,14 @@ class App extends Component {
           <Route exact path='/login'
             render={() => (
               this.state.auth
-                ? <Redirect to='/user' />
+                ? <Redirect to='/users/profile' />
                 : <Login handleInputChange = {this.handleInputChange} handleLoginSubmit={this.handleLoginSubmit} toggleLoginRegister={this.toggleLoginRegister} />
             )}
           />
           <Route exact path='/register'
             render={() => (
               this.state.auth
-                ? <Redirect to='/user' />
+                ? <Redirect to='/users/profile' />
                 : <Register handleCheckboxChange = {this.handleCheckboxChange} handleInputChange = {this.handleInputChange} handleRegisterSubmit={this.handleRegisterSubmit} />
             )}
           />
@@ -188,17 +225,17 @@ class App extends Component {
             render={() => (
               !this.state.auth
                 ? <Redirect to='/login' />
-                : <Profile user={this.state.user} getUserDetails = {this.getUserDetails} />
+                : <Profile user={this.state.user} userPets={this.state.user_pets} getUserDetails = {this.getUserDetails} removeMatch={this.removeMatch}/>
             )}
           />
 
-          {/* <Route exact path='/user/edit'
+          <Route exact path='/user/edit'
             render={() => (
               this.state.auth
-                ? <UserEdit handleUserEditSubmit={this.handleUserEditSubmit} user={this.state.user} />
-                : <Redirect to='/user' />
+                ? <UserEdit handleUserEditSubmit={this.handleUserEditSubmit} user={this.state.user} getUserDetails = {this.getUserDetails} />
+                : <Redirect to='/users/profile' />
             )}
-          /> */}
+          />
 
           {/* <Route exact path='/search/'
             render={() => (<SearchController user={this.state.user} selectedPoster={this.selectedPoster} pageStatus='initial' />)}

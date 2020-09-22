@@ -1,18 +1,16 @@
 class HomeController < ApiController
-    before_action :require_login
+    # before_action :require_login
 
-    def pets
-        uri = URI(`https://api.petfinder.com/v2/animals?location=#{@user.zipcode}`)
+    def index
+        uri = URI("https://api.petfinder.com#{params["nextPage"]}")
 
-        Net::HTTP.start(uri.host, uri.port) do |http|
+        Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
             request = Net::HTTP::Get.new uri
 
-            request.headers = {
-                'Authorization': `Bearer #{ENV["PET_TOKEN"]}`
-            }
+            request['Authorization'] = "Bearer #{ENV['PET_TOKEN']}"
 
             response = http.request(request)
-            render json: JSON.parse(response.body)
+            render json: response.body
         end
             
         # net http to make get request with token

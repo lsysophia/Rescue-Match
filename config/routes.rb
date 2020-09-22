@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
   delete "/logout" => "sessions#destroy"
   get "profile" => "users#profile"
-  get "pets" => "home#pets"
   
   resources :users
   resources :pet_users
+  resources :home, only: [:index]
 
   mount Crono::Web, at: '/crono'
 end

@@ -22,13 +22,13 @@ class UsersController < ApiController
     }
   end
 
-#   def update
-#     @current_user.update(user_params)
+  def update
+    @current_user.update(user_params)
     
-#     render json: {
-#         user: 
-#     }
-#     end
+    render json: {
+        user: updated_user
+    }
+  end
 
   private
 
