@@ -4275,3 +4275,45 @@ Completed 200 OK in 29ms (Views: 8.3ms | ActiveRecord: 3.3ms | Allocations: 1360
 Started POST "/pet_users" for 127.0.0.1 at 2020-09-21 22:55:40 -0500
 Started POST "/pet_users" for 127.0.0.1 at 2020-09-21 22:55:40 -0500
 Started GET "/profile" for 127.0.0.1 at 2020-09-21 22:55:40 -0500
+Started POST "/pet_users" for 127.0.0.1 at 2020-09-21 23:10:32 -0500
+Started POST "/pet_users" for 127.0.0.1 at 2020-09-21 23:10:32 -0500
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PetUsersController#create as */*
+Processing by PetUsersController#create as */*
+  Parameters: {"pet_user"=>{"name"=>"", "species"=>"", "age"=>"", "gender"=>"", "size"=>"", "description"=>""}}
+  Parameters: {"pet_user"=>{"name"=>"", "species"=>"", "age"=>"", "gender"=>"", "size"=>"", "description"=>""}}
+  [1m[36mUser Load (7.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "null"], ["LIMIT", 1]]
+  ↳ app/controllers/api_controller.rb:26:in `block in authenticate_token'
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 34ms (Views: 0.4ms | ActiveRecord: 7.8ms | Allocations: 2305)
+
+
+  [1m[36mUser Load (11.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "null"], ["LIMIT", 1]]
+  ↳ app/controllers/api_controller.rb:26:in `block in authenticate_token'
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 40ms (Views: 0.2ms | ActiveRecord: 32.0ms | Allocations: 4669)
+
+
+  [1m[36mCrono::CronoJob Load (2.6ms)[0m  [1m[34mSELECT "crono_jobs".* FROM "crono_jobs" WHERE "crono_jobs"."job_id" = $1 LIMIT $2[0m  [["job_id", "Perform GetApiTokenJob every 59 minutes"], ["LIMIT", 1]]
+  ↳ config/cronotab.rb:16:in `<main>'
+Started POST "/pet_users" for 127.0.0.1 at 2020-09-21 23:15:04 -0500
+Started POST "/pet_users" for 127.0.0.1 at 2020-09-21 23:15:04 -0500
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PetUsersController#create as */*
+  Parameters: {"pet_user"=>{"name"=>"", "species"=>"", "age"=>"", "gender"=>"", "size"=>"", "description"=>""}}
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PetUsersController#create as */*
+  Parameters: {"pet_user"=>{"name"=>"", "species"=>"", "age"=>"", "gender"=>"", "size"=>"", "description"=>""}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "null"], ["LIMIT", 1]]
+  ↳ app/controllers/api_controller.rb:26:in `block in authenticate_token'
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 17ms (Views: 0.3ms | ActiveRecord: 8.5ms | Allocations: 4872)
+
+
+  [1m[36mUser Load (15.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "null"], ["LIMIT", 1]]
+  ↳ app/controllers/api_controller.rb:26:in `block in authenticate_token'
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 28ms (Views: 0.3ms | ActiveRecord: 16.0ms | Allocations: 3209)
+
+

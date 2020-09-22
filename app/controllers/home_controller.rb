@@ -1,7 +1,5 @@
-require 'UserController'
-
 class HomeController < ApiController
-    before_action :require_login, :set_user
+    before_action :require_login
 
     def pets
         uri = URI(`https://api.petfinder.com/v2/animals?location=#{@user.zipcode}`)
@@ -15,6 +13,7 @@ class HomeController < ApiController
 
             response = http.request(request)
             render json: JSON.parse(response.body)
+        end
             
         # net http to make get request with token
         # return that reponse to frontend
