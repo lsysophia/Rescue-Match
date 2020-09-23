@@ -36,6 +36,6 @@ class PetUsersController < ApiController
 
     private
     def pet_user_params
-        params.require(:pet_user).permit(:name, :species, :breed, :age, :gender, :size, :photo, :description, :status, :user_id)
+        params.require(:pet_user).permit(:name, :species, :breed, :age, :gender, :size, :photo, :description, :status, :contact, :user_id)
     end
 end

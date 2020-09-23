@@ -55,6 +55,8 @@ export default class Home extends Component {
             }
         }).then(res => res.json())
         .then(parsedRes => {
+            console.log(parsedRes.pagination._links.next.href)
+            console.log(parsedRes.animals)
             // debugger
             const animals = parsedRes.animals.map((animal, index) => { return {...animal, myId: index} })
             this.setState({
@@ -86,6 +88,7 @@ export default class Home extends Component {
                         size: this.state.displayAnimal.size,
                         photo: this.state.displayAnimal.primary_photo_cropped.small,
                         description: this.state.displayAnimal.description,
+                        contact: this.state.displayAnimal.contact.email,
                         user_id: this.state.user_id
                     }
                 }),
@@ -113,6 +116,7 @@ export default class Home extends Component {
                         gender: this.state.displayAnimal.gender,
                         size: this.state.displayAnimal.size,
                         description: this.state.displayAnimal.description,
+                        contact: this.state.displayAnimal.contact.email,
                         user_id: this.state.user_id
                     }
                 }),
@@ -128,50 +132,51 @@ export default class Home extends Component {
 
     handleAnswer(event) {
         // debugger
-        event.preventDefault()
+        // event.preventDefault()
         const answer = event.target.innerText
 
+        let matchpoint = 0
         if (answer === "Yes") {
-    //         let matchpoint = 0
-    //         if (this.props.user.has_yard === true) {
-    //             matchpoint += 1
-    //         }
-    //         else if (this.props.user.has_yard === false && this.state.displayAnimal.size === 'small'){
-    //             matchpoint += 1
-    //         }
-    //         else if (this.props.user.has_yard === false && this.state.displayAnimal.size === 'medium') {
-    //             matchpoint += 1
-    //         }
-    //         else if (this.props.user.has_cats === this.state.displayAnimal.environment.cats) {
-    //             matchpoint += 1
-    //         }
-    //         else if (this.props.user.has_cats === false) {
-    //             matchpoint += 1
-    //         }
-    //         else if (this.props.user.has_dogs === this.state.displayAnimal.environment.dogs) {
-    //             matchpoint += 1
-    //         }
-    //         else if (this.props.user.has_dogs === false) {
-    //             matchpoint += 1
-    //         }
-    //         else if (this.props.user.has_child === this.state.displayAnimal.environment.children) {
-    //             matchpoint += 1
-    //         }
-    //         else if (this.props.user.has_child === false) {
-    //             matchpoint += 1
-    //         }
-    //         if (matchpoint >= 3) {
-    //             alert("It's a match!")
-    //             console.log(matchpoint)
+            if (this.props.user.has_yard === true) {
+                matchpoint += 1
+            }
+            if (this.props.user.has_yard === false && this.state.displayAnimal.size === 'small'){
+                matchpoint += 1
+            }
+            if (this.props.user.has_yard === false && this.state.displayAnimal.size === 'medium') {
+                matchpoint += 1
+            }
+            if (this.props.user.has_cats === this.state.displayAnimal.environment.cats) {
+                matchpoint += 1
+            }
+            if (this.props.user.has_cats === false) {
+                matchpoint += 1
+            }
+            if (this.props.user.has_dogs === this.state.displayAnimal.environment.dogs) {
+                matchpoint += 1
+            }
+            if (this.props.user.has_dogs === false) {
+                matchpoint += 1
+            }
+            if (this.props.user.has_child === this.state.displayAnimal.environment.children) {
+                matchpoint += 1
+            }
+            if (this.props.user.has_child === false) {
+                matchpoint += 1
+            }
+            if (matchpoint >= 3) {
+                alert("It's a match!")
+                console.log(matchpoint)
                 this.handlePetSubmit()
-            // } 
-        } else {
-            // do something
-        }
+             } 
+        } 
+        // else {
+        //     // do something
+        // }
 
         if (this.state.displayAnimal.myId === (this.state.listOfAnimals.length - 1)) {
-            // console.log(this.state.nextApiPage)
-            debugger
+            console.log(this.state.nextApiPage)
+            // debugger
             this.getAnimals(this.state.nextApiPage)
         } else {
             this.setState({
@@ -185,36 +190,45 @@ export default class Home extends Component {
     render() {
         return (
             <div className="home-page">
-                <div>
-                    <h1>Welcome to Rescue Match</h1>
-                </div>
                 {this.props.userAuth
                     ?
                     <div className="animal-box">
-                        {this.state.displayAnimal.primary_photo_cropped 
-                            ? 
-                        <img src={this.state.displayAnimal.primary_photo_cropped.small} alt="Headshot" /> 
-                        : null}
-                        <h3>{this.state.displayAnimal.name}</h3>
-                        <p>Age: {this.state.displayAnimal.age}</p>
-                        <p>Gender: {this.state.displayAnimal.gender}</p>
-                        <p>Breed: {this.state.displayAnimal.breeds.unknown ? <span>Unknown</span> : this.state.displayAnimal.breeds.mixed ? <span>Mixed {this.state.displayAnimal.breeds.primary}</span> : <span>{this.state.displayAnimal.breeds.primary}</span>}</p>
-                        <p>Size: {this.state.displayAnimal.size}</p>
-                        <p>About me: {this.state.displayAnimal.description}</p>
-                        <p>Good with Children: {this.state.displayAnimal.environment.children}</p>
-                        <p>Good with Cats: {this.state.displayAnimal.environment.cats}</p>
-                        <p>Good with Dogs: {this.state.displayAnimal.environment.dogs}</p>
-                        <p>Status: {this.state.displayAnimal.status}</p>
-                        <p>Contact: {this.state.displayAnimal.contact.email}</p>
-                        <button onClick={() => this.handleAnswer}>No</button>
-                        <button onClick={() => this.handleAnswer}>Yes</button>
+                        <div className="display-headshot">
+                            {this.state.displayAnimal.primary_photo_cropped 
+                                ? 
+                            <img src={this.state.displayAnimal.primary_photo_cropped.small} alt="Headshot" /> 
+                            : null}
+                        </div>
+                        <div className="display-details">
+                            <h3>{this.state.displayAnimal.name}</h3>
+                            {!this.state.displayAnimal.primary_photo_cropped 
+                                ? 
+                            <p>Species: {this.state.displayAnimal.species}</p> : null}
+                            <p>Age: {this.state.displayAnimal.age}</p>
+                            <p>Gender: {this.state.displayAnimal.gender}</p>
+                            <p>Breed: {this.state.displayAnimal.breeds.unknown ? <span>Unknown</span> : this.state.displayAnimal.breeds.mixed ? <span>Mixed {this.state.displayAnimal.breeds.primary}</span> : <span>{this.state.displayAnimal.breeds.primary}</span>}</p>
+                            <p>Size: {this.state.displayAnimal.size}</p>
+                            <p>About me: {this.state.displayAnimal.description}</p>
+                            <p>Good with Children: {this.state.displayAnimal.environment.children === null ? <span>Unknown</span> : this.state.displayAnimal.environment.children ? <span>Yes</span> : <span>No</span>}</p>
+                            <p>Good with Cats: {this.state.displayAnimal.environment.cats === null ? <span>Unknown</span> : this.state.displayAnimal.environment.cats ? <span>Yes</span> : <span>No</span>}</p>
+                            <p>Good with Dogs: {this.state.displayAnimal.environment.dogs === null ? <span>Unknown</span> : this.state.displayAnimal.environment.dogs ? <span>Yes</span> : <span>No</span>}</p>
+                            <p>Status: {this.state.displayAnimal.status}</p>
+                            <p>Contact: {this.state.displayAnimal.contact.email}</p>
+                        </div>
+                        <div className="user-response">
+                            <button onClick={this.handleAnswer}>No</button>
+                            <button onClick={this.handleAnswer}>Yes</button>
+                        </div>
                     </div>
                     :
-                    <div className="user-nav">
-                        {/* <div> */}
-                            <h3><Link to='/login'>Login</Link></h3>
-                            <h3><Link to='/register'>Register</Link></h3>
-                        {/* </div> */}
+                    <div>
+                        <h1>Welcome to Rescue Match</h1>
+                        <div className="user-nav">
+                            {/* <div> */}
+                                <h3><Link to='/login'>Login</Link></h3>
+                                <h3><Link to='/register'>Register</Link></h3>
+                            {/* </div> */}
+                        </div>
                     </div>
                 }
             </div>

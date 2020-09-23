@@ -23,11 +23,12 @@ class UsersController < ApiController
   end
 
   def update
-    @current_user.update(user_params)
+    user = User.find_by!(auth_token: request.headers[:token])
+    user.update(user_params)
     
-    render json: {
-        user: updated_user
-    }
+    # render json: {
+    #     user: @current_user
+    # }
   end
 
   private

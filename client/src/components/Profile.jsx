@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class Profile extends Component {
 
@@ -19,6 +20,7 @@ class Profile extends Component {
                         <p><em>Have Cats:</em> {this.props.user.has_cats === false ? <span>No</span> : <span>Yes</span>}</p>
                         <p><em>Have Dogs:</em> {this.props.user.has_dogs === false ? <span>No</span> : <span>Yes</span>}</p>
                         <p><em>Have Yard:</em> {this.props.user.has_yard === false ? <span>No</span> : <span>Yes</span>}</p>
+                        <h4><Link to='/user/edit'>Edit Profile</Link></h4>
                     </div>
                 </aside>
                 <section>
@@ -27,9 +29,12 @@ class Profile extends Component {
                         { this.props.userPets.map((pet) => {
                             console.log(pet)
                             return <li key={pet.id}>
+                                    <div className="single-display-box">
                                     <img src={pet.photo} alt='pet' />
                                     <p>Name: {pet.name}</p>
+                                    <p>Contact: {pet.contact}</p>
                                     <button onClick={() => this.props.removeMatch(pet.id)}>Unmatch</button>
+                                    </div>
                             </li>
                         })}
                     </div>

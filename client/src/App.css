@@ -102,6 +102,7 @@ header li{
 .home-page .user-nav {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -109,15 +110,26 @@ header li{
 .home-page .animal-box{
   display: flex;
   flex-direction: column;
-  max-width: 80vw;
-  height: 80vh;
+  width: auto;
+  max-height: 85vh;
   align-items: center;
   background-color: gainsboro;
   font-size: 0.5em;
 }
 
+.home-page .user-response {
+  display: flex;
+  flex-direction: row;
+}
+
+.home-page .display-details {
+  text-align: center;
+}
+
 .animal-box img{
-  max-width: 25vw;
+  /* max-width: 20vw; */
+  max-height: 20vh;
+  /* border-radius: 35%; */
 }
 /*HOME PAGE END*/
 
@@ -138,13 +150,32 @@ header li{
   display: flex;
   flex-direction: column;
   width: auto;
-  height: 90vh;
+  height: 85vh;
   overflow-y: scroll;
 }
 
-.profile-page .display-animal .li {
-  text-decoration: none;
+.profile-page .single-display-box img {
+  size: 15vmax;
 }
+
+/* .profile-page .display-animal .li {
+  text-decoration: none;
+} */
 
 
 /*USER PROFILE END*/
+
+/* ABOUT PAGE STARTS */
+.about-box {
+  min-height: 80vh;
+  color:black;
+  padding: 0 70px;
+}
+/* ABOUT PAGE ENDS */
+
+
+/*FOOTER STARTS*/
+footer {
+  text-align: center;
+}
+/*FOOTER ENDS*/

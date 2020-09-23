@@ -9,7 +9,8 @@ import Register from './components/Register'
 import Nav from './components/Nav'
 import Profile from './components/Profile'
 import UserEdit from './components/UserEdit'
-// import Footer from './components/Footer'
+import Footer from './components/Footer'
+import About from './components/About'
 
 
 class App extends Component {
@@ -136,7 +137,7 @@ class App extends Component {
         this.setState({
           // fireRedirect: true,
           // redirectPath: '/profile',
-          user: parsedRes.data.updatedUser,
+          user: parsedRes,
         })
       }).catch(err => console.log(err))
   }
@@ -232,16 +233,16 @@ class App extends Component {
           <Route exact path='/user/edit'
             render={() => (
               this.state.auth
-                ? <UserEdit handleUserEditSubmit={this.handleUserEditSubmit} user={this.state.user} getUserDetails = {this.getUserDetails} />
+                ? <UserEdit handleUserEditSubmit={this.handleUserEditSubmit} user={this.state.user} getUserDetails = {this.getUserDetails} handleInputChange = {this.handleInputChange} />
                 : <Redirect to='/users/profile' />
             )}
           />
 
-          {/* <Route exact path='/search/'
-            render={() => (<SearchController user={this.state.user} selectedPoster={this.selectedPoster} pageStatus='initial' />)}
-          /> */}
+          <Route exact path='/about' 
+            render={() => <About /> }
+          />
            </div>
-        {/* <Footer /> */}
+        <Footer />
     </div>
     )
   };

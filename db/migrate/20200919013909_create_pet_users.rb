@@ -10,6 +10,7 @@ class CreatePetUsers < ActiveRecord::Migration[6.0]
       t.text   :photo
       t.text   :description
       t.string :status
+      t.text :contact
       t.integer :user_id
 
       t.timestamps
