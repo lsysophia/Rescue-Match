@@ -9,7 +9,8 @@ class UserEdit extends Component {
             zipcode: props.user.zipcode,
             has_child: props.user.has_child,
             has_cats: props.user.has_cats,
-            has_dogs: props.user.has_dogs
+            has_dogs: props.user.has_dogs,
+            has_yard: props.user.has_yard
         }
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
@@ -57,29 +58,29 @@ class UserEdit extends Component {
                         onChange={this.handleInputChange}
                     />
                     <p>Please check on all that apply</p>
+                    <span>Do you have any kids?</span>
+                    <input type="checkbox"
+                        name="has_child"
+                        defaultChecked={this.state.has_child}
+                        onChange={this.handleCheckboxChange}
+                    />
                     <span>Do you have any cats?</span>
                     <input type="checkbox"
                         name="has_cats"
-                        value={this.state.has_cats}
+                        defaultChecked={this.state.has_cats}
                         onChange={this.handleCheckboxChange}
                     />
                     <span>Do you have any dogs?</span>
                     <input type="checkbox"
                         name="has_dogs"
-                        value={this.state.has_dogs}
-                        onChange={this.handleCheckboxChange}
-                    />
-                    <span>Do you have any kids?</span>
-                    <input type="checkbox"
-                        name="has_child"
-                        value={this.state.has_child}
+                        defaultChecked={this.state.has_dogs}
                         onChange={this.handleCheckboxChange}
                     />
                     <span>Do you have a yard?</span>
                     <input type="checkbox"
                         name="has_yard"
-                        // value={this.state.has_yard.value}
-                        checked={this.state.has_yard}
+                        // defaultChecked={this.state.has_yard.value}
+                        defaultChecked={this.state.has_yard}
                         onChange={this.handleCheckboxChange}
                     />
                     <input type="submit"
