@@ -13,6 +13,7 @@ class Profile extends Component {
             <div className="profile-page">
                 <aside>
                     <h3>Welcome Back, {this.props.user.username}!</h3>
+                    <h3>Below is your information:</h3>
                     <div className="user-info">
                         <p><em>Email:</em> {this.props.user.email}</p>
                         <p><em>Zipcode:</em> {this.props.user.zipcode}</p>
@@ -24,7 +25,7 @@ class Profile extends Component {
                     </div>
                 </aside>
                 <section>
-                    <h4>Here's a list of your saved animals</h4>
+                    <h3>Here's the list of your saved animals</h3>
                     <div className="display-animal">
                         { this.props.userPets.map((pet) => {
                             console.log(pet)

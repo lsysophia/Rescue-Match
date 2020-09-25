@@ -91,6 +91,7 @@ class App extends Component {
       .then(parsedRes => {
         if (parsedRes.token) {
           Auth.authenticateToken(parsedRes.token)
+          this.getUserDetails()
           this.setState({
             auth: Auth.isUserAuthenticated(),
           })
@@ -135,9 +136,9 @@ class App extends Component {
     }).then(res => res.json())
       .then(parsedRes => {
         this.setState({
-          // fireRedirect: true,
-          // redirectPath: '/profile',
           user: parsedRes,
+          fireRedirect: true,
+          redirectPath: '/profile',
         })
       }).catch(err => console.log(err))
   }

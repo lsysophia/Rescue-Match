@@ -25,8 +25,8 @@ html{
 }
 
 body{
-  max-height: 100vh;
-  max-width: 100vw;
+  height: 100vh;
+  width: 100vw;
 }
 
 /* APP */
@@ -158,6 +158,19 @@ header li{
   size: 15vmax;
 }
 
+.profile-page aside {
+  height: fit-content;
+  font-size: 2em;
+}
+
+.profile-page section {
+  width: 65%;
+}
+
+.profile-page section h3 {
+  font-size: 1.2em;
+}
+
 /* .profile-page .display-animal .li {
   text-decoration: none;
 } */
@@ -170,6 +183,7 @@ header li{
   min-height: 80vh;
   color:black;
   padding: 0 70px;
+  background-color: gainsboro;
 }
 /* ABOUT PAGE ENDS */
 

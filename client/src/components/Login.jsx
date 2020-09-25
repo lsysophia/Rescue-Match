@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
 export default class Login extends Component {
 
     render() {
@@ -10,9 +12,7 @@ export default class Login extends Component {
                     <input type="submit" value="Log in!" />
                 </form>
                 <span>Don't have an account?</span>
-                <form className="form-box" onSubmit={() => this.props.toggleLoginRegister()} >
-                    <input type="submit" value="Register" />
-                </form>
+                <Link to='/Register'><button>Register</button></Link>
 
             </div>
         )
