@@ -91,7 +91,7 @@ class App extends Component {
       .then(parsedRes => {
         if (parsedRes.token) {
           Auth.authenticateToken(parsedRes.token)
-          this.getUserDetails()
+          // this.getUserDetails()
           this.setState({
             auth: Auth.isUserAuthenticated(),
           })
