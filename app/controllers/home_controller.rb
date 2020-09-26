@@ -10,11 +10,9 @@ class HomeController < ApiController
             request['Authorization'] = "Bearer #{ENV['PET_TOKEN']}"
 
             response = http.request(request)
+
             render json: response.body
         end
-            
-        # net http to make get request with token
-        # return that reponse to frontend
     end
 
     private

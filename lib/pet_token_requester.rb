@@ -13,7 +13,7 @@ class PetTokenRequester
 
         Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
             response = http.request(request)
-        
+
             ENV["PET_TOKEN"] = JSON.parse(response.body)["access_token"]
         end
     end

@@ -105,8 +105,9 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    pry-rails (0.3.9)
-      pry (>= 0.10.4)
+    pry-remote (0.1.8)
+      pry (~> 0.9)
+      slop (~> 3.0)
     puma (4.3.6)
       nio4r (~> 2.0)
     rack (2.2.3)
@@ -150,6 +151,7 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.1.0)
       tilt (~> 2.0)
+    slop (3.6.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -184,7 +186,7 @@ DEPENDENCIES
   haml
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
-  pry-rails
+  pry-remote
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.3)
   sinatra

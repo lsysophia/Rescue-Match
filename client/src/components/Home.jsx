@@ -30,33 +30,23 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        // debugger
         // this.props.resetFireRedirect()
         // if (this.props.userAuth) {
             this.props.getUserDetails()
-            // debugger
         // }
         if (this.state.zipcode) {
             this.getAnimals()
         }
-        // debugger
     }
 
-    getAnimals(nextPage = `/v2/animals?location=${this.state.zipcode}`) {
-        // console.log(this.props.user)
-        // console.log(this.state.zipcode)
-        // debugger
-        fetch(`/home?nextPage=${nextPage}`, {
+    getAnimals(nextPage = `/v2/animals?location=${this.state.zipcode}&page=2`) {
+        fetch(`/home?nextPage=${encodeURIComponent(nextPage)}`, {
             method: 'GET',
             headers: {
             'Authorization': `Token ${Auth.getToken()}`,
-            // token: Auth.getToken(),
             }
         }).then(res => res.json())
         .then(parsedRes => {
-            console.log(parsedRes.pagination._links.next.href)
-            console.log(parsedRes.animals)
-            // debugger
             const animals = parsedRes.animals.map((animal, index) => { return {...animal, myId: index} })
             this.setState({
                 listOfAnimals: animals,
@@ -67,8 +57,6 @@ export default class Home extends Component {
     }
 
     handlePetSubmit() {
-        // console.log(this.state.displayAnimal)
-        // debugger
         if (this.state.displayAnimal.primary_photo_cropped) {
             fetch('/pet_users', {
                 method: 'POST',
