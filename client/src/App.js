@@ -89,6 +89,7 @@ class App extends Component {
       }),
     }).then(res => res.json())
       .then(parsedRes => {
+        console.log(parsedRes)
         if (parsedRes.token) {
           Auth.authenticateToken(parsedRes.token)
           // this.getUserDetails()
@@ -213,28 +214,28 @@ class App extends Component {
             render={() => (
               this.state.auth
                 ? <Redirect to='/users/profile' />
-                : <Login handleInputChange = {this.handleInputChange} handleLoginSubmit={this.handleLoginSubmit} toggleLoginRegister={this.toggleLoginRegister} />
+                : <Login handleInputChange={this.handleInputChange} handleLoginSubmit={this.handleLoginSubmit} toggleLoginRegister={this.toggleLoginRegister} />
             )}
           />
           <Route exact path='/register'
             render={() => (
               this.state.auth
                 ? <Redirect to='/users/profile' />
-                : <Register handleCheckboxChange = {this.handleCheckboxChange} handleInputChange = {this.handleInputChange} handleRegisterSubmit={this.handleRegisterSubmit} />
+                : <Register handleCheckboxChange={this.handleCheckboxChange} handleInputChange={this.handleInputChange} handleRegisterSubmit={this.handleRegisterSubmit} />
             )}
           />
           <Route exact path='/users/profile'
             render={() => (
               !this.state.auth
                 ? <Redirect to='/login' />
-                : <Profile user={this.state.user} userPets={this.state.user_pets} getUserDetails = {this.getUserDetails} removeMatch={this.removeMatch}/>
+                : <Profile user={this.state.user} userPets={this.state.user_pets} getUserDetails={this.getUserDetails} removeMatch={this.removeMatch}/>
             )}
           />
 
           <Route exact path='/user/edit'
             render={() => (
               this.state.auth
-                ? <UserEdit handleUserEditSubmit={this.handleUserEditSubmit} user={this.state.user} getUserDetails = {this.getUserDetails} handleInputChange = {this.handleInputChange} />
+                ? <UserEdit handleUserEditSubmit={this.handleUserEditSubmit} user={this.state.user} getUserDetails={this.getUserDetails} handleInputChange={this.handleInputChange} />
                 : <Redirect to='/users/profile' />
             )}
           />

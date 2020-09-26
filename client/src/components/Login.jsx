@@ -12,7 +12,7 @@ export default class Login extends Component {
                     <input type="submit" value="Log in!" />
                 </form>
                 <span>Don't have an account?</span>
-                <Link to='/Register'><button>Register</button></Link>
+                <Link to='/register'><button>Register</button></Link>
 
             </div>
         )
