@@ -1,5 +1,9 @@
 {
     "name": "rescue-match",
+    "engines": {
+        "node": "14.5.0",
+        "yarn": "1.22.5"
+    },
     "scripts": {
         "build": "yarn --cwd client install && yarn --cwd client build",
         "deploy": "cp -a client/build/. public/",
