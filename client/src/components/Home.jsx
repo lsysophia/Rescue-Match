@@ -22,7 +22,7 @@ export default class Home extends Component {
             },
             nextApiPage: "",
             user_id: this.props.user.user_id,
-            zipcode: this.props.user.zipcode
+            zipcode: this.props.user.zipcode,
         }
         this.handleAnswer = this.handleAnswer.bind(this)
         this.getAnimals = this.getAnimals.bind(this)
@@ -31,8 +31,6 @@ export default class Home extends Component {
 
     componentDidMount() {
         this.props.getUserDetails()
-        // this.props.resetFireRedirect()
-        // this.forceUpdate()
         // debugger
         if (this.state.zipcode) {
             this.getAnimals()
@@ -119,7 +117,6 @@ export default class Home extends Component {
 
     handleAnswer(event) {
         // debugger
-        // event.preventDefault()
         const answer = event.target.innerText
 
         let matchpoint = 0
@@ -180,7 +177,6 @@ export default class Home extends Component {
         // }
 
         if (this.state.displayAnimal.myId === (this.state.listOfAnimals.length - 1)) {
-            console.log(this.state.nextApiPage)
             // debugger
             this.getAnimals(this.state.nextApiPage)
         } else {
@@ -202,7 +198,7 @@ export default class Home extends Component {
                             {this.state.displayAnimal.primary_photo_cropped
                                 ?
                             <img src={this.state.displayAnimal.primary_photo_cropped.small} alt="Headshot" />
-                            : null}
+                            : <img src="https://agriculture.ny.gov/sites/g/files/oee1031/files/styles/mobile_lead/public/media/2019/09/Dogs%20and%20Cats%20hero.jpg?h=bf52df92&itok=OcvyBcDT" alt="Default" />}
                         </div>
                         <div className="display-details">
                             <h3>{this.state.displayAnimal.name}</h3>
@@ -221,8 +217,8 @@ export default class Home extends Component {
                             <p>Contact: {this.state.displayAnimal.contact.email}</p>
                         </div>
                         <div className="user-response">
-                            <button onClick={this.handleAnswer}>No</button>
-                            <button onClick={this.handleAnswer}>Yes</button>
+                            <button onClick={this.handleAnswer}>Nope</button>
+                            <button onClick={this.handleAnswer}>Like</button>
                         </div>
                     </div>
                     :

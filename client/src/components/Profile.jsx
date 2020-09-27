@@ -28,13 +28,14 @@ class Profile extends Component {
                     <h3>Here's the list of your saved animals</h3>
                     <div className="display-animal">
                         { this.props.userPets.map((pet) => {
-                            console.log(pet)
                             return <li key={pet.id}>
                                     <div className="single-display-box">
-                                    <img src={pet.photo} alt='pet' />
-                                    <p>Name: {pet.name}</p>
-                                    <p>Contact: {pet.contact}</p>
-                                    <button onClick={() => this.props.removeMatch(pet.id)}>Unmatch</button>
+                                        <img src={pet.photo} alt='pet' />
+                                            <div className="info">
+                                                <p>Name: {pet.name}</p>
+                                                <p>Contact: {pet.contact}</p>
+                                                <button onClick={() => this.props.removeMatch(pet.id)}>Unmatch</button>
+                                            </div>
                                     </div>
                             </li>
                         })}
@@ -44,7 +45,7 @@ class Profile extends Component {
         </div>
       )
   }
-    
+
 }
 
 export default Profile

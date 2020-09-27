@@ -35,7 +35,7 @@ class App extends Component {
       user_pets: [],
       user_id: '',
     }
-    this.resetFireRedirect = this.resetFireRedirect.bind(this)
+    // this.resetFireRedirect = this.resetFireRedirect.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
@@ -46,11 +46,11 @@ class App extends Component {
     this.removeMatch = this.removeMatch.bind(this)
   }
 
-  resetFireRedirect() {
-    this.setState({
-      fireRedirect: !this.state.fireRedirect
-    })
-  }
+  // resetFireRedirect() {
+  //   this.setState({
+  //     fireRedirect: !this.state.fireRedirect
+  //   })
+  // }
 
   handleInputChange(e) {
       const name = e.currentTarget.name;
@@ -92,7 +92,6 @@ class App extends Component {
         console.log(parsedRes)
         if (parsedRes.token) {
           Auth.authenticateToken(parsedRes.token)
-          // this.getUserDetails()
           this.setState({
             auth: Auth.isUserAuthenticated(),
           })

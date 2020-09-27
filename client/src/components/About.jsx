@@ -15,8 +15,8 @@ export default class About extends Component {
                 <h2>How to use this app</h2>
                 <p>
                     Search results will be auto-populated based on the zipcode you have filled out in your profile.
-                    If you like the animal you see, you can click Yes, otherwise you can click No.
-                    If Yes, your criteria will be compared to what the rescue needs, if it matches, you'll be alerted that it's a match.
+                    You may choose to "Like" or "Nope" the displayed animal.
+                    If you choose "Like", certain criterias in your profile will be compared to what the rescue needs, if it matches, you'll be alerted that it's a match.
                     If it doesn't match, you won't be alerted.
                 </p><br></br>
 
