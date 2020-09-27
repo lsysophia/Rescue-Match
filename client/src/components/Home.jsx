@@ -30,16 +30,16 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
+        this.props.getUserDetails()
         // this.props.resetFireRedirect()
-        // if (this.props.userAuth) {
-            this.props.getUserDetails()
-        // }
+        // this.forceUpdate()
+        // debugger
         if (this.state.zipcode) {
             this.getAnimals()
         }
     }
 
-    getAnimals(nextPage = `/v2/animals?location=${this.state.zipcode}&page=2`) {
+    getAnimals(nextPage = `/v2/animals?location=${this.state.zipcode}`) {
         fetch(`/home?nextPage=${encodeURIComponent(nextPage)}`, {
             method: 'GET',
             headers: {
@@ -136,27 +136,45 @@ export default class Home extends Component {
             if (this.props.user.has_cats === this.state.displayAnimal.environment.cats) {
                 matchpoint += 1
             }
-            if (this.props.user.has_cats === false) {
+            if (this.props.user.has_cats === false && this.state.displayAnimal.environment.cats === null) {
                 matchpoint += 1
+            }
+            if (this.props.user.has_cats === false && this.state.displayAnimal.environment.cats === true) {
+                matchpoint += 1
+            }
+            if (this.props.user.has_cats === true && this.state.displayAnimal.environment.cats === false) {
+                matchpoint -= 1
             }
             if (this.props.user.has_dogs === this.state.displayAnimal.environment.dogs) {
                 matchpoint += 1
             }
-            if (this.props.user.has_dogs === false) {
+            if (this.props.user.has_dogs === false && this.state.displayAnimal.environment.dogs === null) {
                 matchpoint += 1
+            }
+            if (this.props.user.has_dogs === false && this.state.displayAnimal.environment.dogs === true) {
+                matchpoint += 1
+            }
+            if (this.props.user.has_dogs === true && this.state.displayAnimal.environment.dogs === false) {
+                matchpoint -= 1
             }
             if (this.props.user.has_child === this.state.displayAnimal.environment.children) {
                 matchpoint += 1
             }
-            if (this.props.user.has_child === false) {
+            if (this.props.user.has_child === false && this.state.displayAnimal.environment.children === null) {
                 matchpoint += 1
             }
-            if (matchpoint >= 3) {
+            if (this.props.user.has_child === false && this.state.displayAnimal.environment.children === true) {
+                matchpoint += 1
+            }
+            if (this.props.user.has_child === true && this.state.displayAnimal.environment.children === false) {
+                matchpoint -= 1
+            }
+            if (matchpoint > 3) {
                 alert("It's a match!")
-                console.log(matchpoint)
                 this.handlePetSubmit()
-             } 
-        } 
+             }
+             console.log(matchpoint)
+        }
         // else {
         //     // do something
         // }
@@ -181,15 +199,15 @@ export default class Home extends Component {
                     ?
                     <div className="animal-box">
                         <div className="display-headshot">
-                            {this.state.displayAnimal.primary_photo_cropped 
-                                ? 
-                            <img src={this.state.displayAnimal.primary_photo_cropped.small} alt="Headshot" /> 
+                            {this.state.displayAnimal.primary_photo_cropped
+                                ?
+                            <img src={this.state.displayAnimal.primary_photo_cropped.small} alt="Headshot" />
                             : null}
                         </div>
                         <div className="display-details">
                             <h3>{this.state.displayAnimal.name}</h3>
-                            {!this.state.displayAnimal.primary_photo_cropped 
-                                ? 
+                            {!this.state.displayAnimal.primary_photo_cropped
+                                ?
                             <p>Species: {this.state.displayAnimal.species}</p> : null}
                             <p>Age: {this.state.displayAnimal.age}</p>
                             <p>Gender: {this.state.displayAnimal.gender}</p>

@@ -145,7 +145,6 @@ class App extends Component {
   }
 
   getUserDetails() {
-    // this.resetFireRedirect()
     fetch('/profile', {
       method: 'GET',
       headers: {
@@ -154,9 +153,8 @@ class App extends Component {
       }
     }).then(res => res.json())
     .then(res => {
-      console.log(res)
       this.setState({
-        user: res.user, 
+        user: res.user,
         user_pets: res.pets,
       })
     }).catch(err => console.log(err))
@@ -187,7 +185,6 @@ class App extends Component {
   }
 
   removeMatch(id) {
-    // debugger
     fetch(`/pet_users/${id}`, {
       method: 'DELETE',
       headers: {
@@ -207,7 +204,7 @@ class App extends Component {
        <div className="container">
           <Route exact path='/'
             render={() => (
-              <Home userAuth={this.state.auth} user={this.state.user} getUserDetails={this.getUserDetails} resetFireRedirect={this.resetFireRedirect}/>
+              <Home userAuth={this.state.auth} user={this.state.user} getUserDetails={this.getUserDetails}/>
             )}
           />
           <Route exact path='/login'
@@ -240,7 +237,7 @@ class App extends Component {
             )}
           />
 
-          <Route exact path='/about' 
+          <Route exact path='/about'
             render={() => <About /> }
           />
            </div>

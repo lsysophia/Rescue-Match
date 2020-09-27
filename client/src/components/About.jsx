@@ -7,18 +7,17 @@ export default class About extends Component {
             <article className="about-box">
                 <h1>Rescue Match</h1>
                 <p className="about">
-                    Welcome to the Rescue Match web-app! This app was created to match users with rescue animals that they may like. 
+                    Welcome to the Rescue Match web-app! This app was created to match users with rescue animals that they may like.
                     </p><br></br>
                 <p>
                     If you would like to register, please register <Link to='/register'>Here</Link>
                 </p><br></br>
                 <h2>How to use this app</h2>
                 <p>
-                    
-                    </p>
-                <h2>Search Functionality</h2>
-                <p>
-                    Search results will be auto-populated based on the Zipcode you have filled out in your profile. You can click through the animals on display and click on "Yes" or "No".
+                    Search results will be auto-populated based on the zipcode you have filled out in your profile.
+                    If you like the animal you see, you can click Yes, otherwise you can click No.
+                    If Yes, your criteria will be compared to what the rescue needs, if it matches, you'll be alerted that it's a match.
+                    If it doesn't match, you won't be alerted.
                 </p><br></br>
 
 
