@@ -71,6 +71,7 @@ header li{
   text-transform: uppercase;
   padding: 10px;
   letter-spacing: 1px;
+  cursor: pointer;
 }
 /*HEADER END
 
@@ -113,8 +114,11 @@ header li{
   width: auto;
   max-height: 85vh;
   align-items: center;
-  background-color: gainsboro;
+  /* background-color: gainsboro; */
   font-size: 0.5em;
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.80);
+  padding: 10px;
 }
 
 .home-page .user-response {
@@ -140,6 +144,14 @@ header li{
   justify-content: space-evenly;
   height: 90vh;
   width: 90vw;
+  padding: 10px;
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.5);
+}
+
+.profile-page aside {
+  font-family: 'Fredericka the Great', cursive;
+  font-weight: bold;
 }
 
 .profile-page .user-info {
@@ -156,15 +168,17 @@ header li{
 
 .profile-page .display-animal li {
   list-style-type: none;
+  margin-bottom: 10px;
 }
 
 .profile-page .single-display-box img {
   max-height: 200px;
+  float: left;
 }
 
-.profile-page .single-display-box {
-  display: flex;
-  justify-content: space-between;
+.profile-page .single-display-box .info {
+  float: right;
+  width: 300px;
 }
 
 .profile-page aside {
@@ -192,7 +206,9 @@ header li{
   min-height: 80vh;
   color:black;
   padding: 0 70px;
-  background-color: gainsboro;
+  /* background-color: gainsboro; */
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.80);
 }
 /* ABOUT PAGE ENDS */
 

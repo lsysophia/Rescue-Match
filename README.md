@@ -3,7 +3,11 @@
 ## Description
 This app was created to match users with rescue animals that they may like.
 
+### App Screenshots
+https://imgur.com/a/ZQLejOK
+
 ## Schema:
+https://imgur.com/a/gabmmpC
 
 
 ## Wireframe:
@@ -21,21 +25,22 @@ https://wireframe.cc/Rw7yMu
 ## HTTP Routes
 
 Frontend:
-'/'
-'/about'
-'/register'
-'/login'
-'/logout'
-'/users/profile'
-'/user/edit'
+- '/'
+- '/about'
+- '/register'
+- '/login'
+- '/logout'
+- '/users/profile'
+- '/user/edit'
 
 Backend:
-'/login'
-'/logout'
-'/users'
-'/users/:id'
-'/profile'
-'/pet_users/:id'
+- '/home' index only
+- '/login'
+- '/logout'
+- '/users'
+- '/users/:id'
+- '/profile'
+- '/pet_users/:id'
 
 ## Technologies
 
@@ -45,7 +50,6 @@ Backend:
 - Rails user auth
 - Ruby Crono Gem (https://github.com/plashchynski/crono)
 - Heroku autodeployment whenever latest revisions get pushed to Github
--
 
 ## API
 - PetFinder API (https://www.petfinder.com/developers/v2/docs/)

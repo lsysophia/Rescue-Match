@@ -89,7 +89,6 @@ class App extends Component {
       }),
     }).then(res => res.json())
       .then(parsedRes => {
-        console.log(parsedRes)
         if (parsedRes.token) {
           Auth.authenticateToken(parsedRes.token)
           this.setState({

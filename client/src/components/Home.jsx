@@ -23,15 +23,16 @@ export default class Home extends Component {
             nextApiPage: "",
             user_id: this.props.user.user_id,
             zipcode: this.props.user.zipcode,
+            match: "none",
         }
         this.handleAnswer = this.handleAnswer.bind(this)
         this.getAnimals = this.getAnimals.bind(this)
         this.handlePetSubmit = this.handlePetSubmit.bind(this)
+        this.showMatchAnimation = this.showMatchAnimation.bind(this)
     }
 
     componentDidMount() {
         this.props.getUserDetails()
-        // debugger
         if (this.state.zipcode) {
             this.getAnimals()
         }
@@ -80,9 +81,6 @@ export default class Home extends Component {
             }).then(res => res.json())
             .then(res => {
                 console.log('trying to create a pet for user' + res)
-            //   this.setState({
-            //     fireRedirect: true,
-            //   })
             }).catch(err => console.log(err))
         } else {
             fetch('/pet_users', {
@@ -108,19 +106,15 @@ export default class Home extends Component {
             }).then(res => res.json())
             .then(res => {
                 console.log('trying to create a pet for user' + res)
-            //   this.setState({
-            //     fireRedirect: true,
-            //   })
             }).catch(err => console.log(err))
         }
       }
 
     handleAnswer(event) {
-        // debugger
         const answer = event.target.innerText
 
         let matchpoint = 0
-        if (answer === "Yes") {
+        if (answer === "Like") {
             if (this.props.user.has_yard === true) {
                 matchpoint += 1
             }
@@ -167,30 +161,58 @@ export default class Home extends Component {
                 matchpoint -= 1
             }
             if (matchpoint > 3) {
-                alert("It's a match!")
+                this.showMatchAnimation()
                 this.handlePetSubmit()
-             }
-             console.log(matchpoint)
+            }
         }
-        // else {
-        //     // do something
-        // }
 
-        if (this.state.displayAnimal.myId === (this.state.listOfAnimals.length - 1)) {
-            // debugger
-            this.getAnimals(this.state.nextApiPage)
-        } else {
-            this.setState({
-                displayAnimal: this.state.listOfAnimals.find((animal) => {
-                    return animal.myId === (this.state.displayAnimal.myId + 1)
+        if (matchpoint <= 3) {
+            if (this.state.displayAnimal.myId === (this.state.listOfAnimals.length - 1)) {
+                this.getAnimals(this.state.nextApiPage)
+            } else {
+                this.setState({
+                    displayAnimal: this.state.listOfAnimals.find((animal) => {
+                        return animal.myId === (this.state.displayAnimal.myId + 1)
+                    })
                 })
-            })
+            }
         }
+    }
+
+    showMatchAnimation() {
+        this.setState({
+            match: "inline"
+        })
+
+        setTimeout(() => {
+            this.setState({
+                match: "none"
+            })
+
+            if (this.state.displayAnimal.myId === (this.state.listOfAnimals.length - 1)) {
+                this.getAnimals(this.state.nextApiPage)
+            } else {
+                this.setState({
+                    displayAnimal: this.state.listOfAnimals.find((animal) => {
+                        return animal.myId === (this.state.displayAnimal.myId + 1)
+                    })
+                })
+            }
+        }, 2000)
     }
 
     render() {
         return (
             <div className="home-page">
+                <div style={{position: "absolute", right: 150, display: this.state.match, color: "red"}}>MATCH!</div>
+                <lottie-player
+                    src="https://assets8.lottiefiles.com/packages/lf20_sXVZLv.json"
+                    background="transparent"
+                    speed="1"
+                    style={{width: 500, height: 500, position: "absolute", right: 110, display: this.state.match}}
+                    loop
+                    autoplay>
+                </lottie-player>
                 {this.props.userAuth
                     ?
                     <div className="animal-box">

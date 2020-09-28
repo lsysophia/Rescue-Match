@@ -25,7 +25,7 @@ class Profile extends Component {
                     </div>
                 </aside>
                 <section>
-                    <h3>Here's the list of your saved animals</h3>
+                    <h3>Here's the list of your matched animals</h3>
                     <div className="display-animal">
                         { this.props.userPets.map((pet) => {
                             return <li key={pet.id}>
