@@ -236,7 +236,7 @@ class App extends Component {
           />
 
           <Route exact path='/about'
-            render={() => <About /> }
+            render={() => (<About user={this.state.user} />)}
           />
            </div>
         <Footer />

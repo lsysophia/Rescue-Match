@@ -32,9 +32,11 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        this.props.getUserDetails()
-        if (this.state.zipcode) {
-            this.getAnimals()
+        if (this.props.userAuth) {
+            this.props.getUserDetails()
+            if (this.state.zipcode) {
+                this.getAnimals()
+            }
         }
     }
 
