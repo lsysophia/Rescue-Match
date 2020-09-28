@@ -10,7 +10,7 @@ class UserEdit extends Component {
             has_child: props.user.has_child,
             has_cats: props.user.has_cats,
             has_dogs: props.user.has_dogs,
-            has_yard: props.user.has_yard
+            has_yard: props.user.has_yard,
         }
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
@@ -35,10 +35,10 @@ class UserEdit extends Component {
         })
       }
 
-    render() {
-        return (
-            <div>
-                <form className="form-box" onSubmit={(e) => this.props.handleUserEditSubmit(e, this.state, this.props.user.id)}>
+      render() {
+          return (
+              <div>
+                <form className="form-box" onSubmit={(e) => this.props.handleUserEditSubmit(e, this.state, this.props.user.user_id)}>
                     <input type="text"
                         name="name"
                         value={this.state.name}
@@ -79,7 +79,6 @@ class UserEdit extends Component {
                     <span>Do you have a yard?</span>
                     <input type="checkbox"
                         name="has_yard"
-                        // defaultChecked={this.state.has_yard.value}
                         defaultChecked={this.state.has_yard}
                         onChange={this.handleCheckboxChange}
                     />

@@ -35,7 +35,6 @@ class App extends Component {
       user_pets: [],
       user_id: '',
     }
-    // this.resetFireRedirect = this.resetFireRedirect.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
@@ -45,12 +44,6 @@ class App extends Component {
     this.getUserDetails = this.getUserDetails.bind(this)
     this.removeMatch = this.removeMatch.bind(this)
   }
-
-  // resetFireRedirect() {
-  //   this.setState({
-  //     fireRedirect: !this.state.fireRedirect
-  //   })
-  // }
 
   handleInputChange(e) {
       const name = e.currentTarget.name;
@@ -137,7 +130,7 @@ class App extends Component {
         this.setState({
           user: parsedRes,
           fireRedirect: true,
-          redirectPath: '/profile',
+          redirectPath: '/users/profile',
         })
       }).catch(err => console.log(err))
   }
@@ -230,13 +223,13 @@ class App extends Component {
           <Route exact path='/user/edit'
             render={() => (
               this.state.auth
-                ? <UserEdit handleUserEditSubmit={this.handleUserEditSubmit} user={this.state.user} getUserDetails={this.getUserDetails} handleInputChange={this.handleInputChange} />
+                ? <UserEdit handleUserEditSubmit={this.handleUserEditSubmit} user={this.state.user} getUserDetails={this.getUserDetails} />
                 : <Redirect to='/users/profile' />
             )}
           />
 
           <Route exact path='/about'
-            render={() => (<About user={this.state.user} />)}
+            render={() => (<About />)}
           />
            </div>
         <Footer />

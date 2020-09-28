@@ -120,10 +120,10 @@ export default class Home extends Component {
             if (this.props.user.has_yard === true) {
                 matchpoint += 1
             }
-            if (this.props.user.has_yard === false && this.state.displayAnimal.size === 'small'){
+            if (this.props.user.has_yard === false && this.state.displayAnimal.size === 'Small'){
                 matchpoint += 1
             }
-            if (this.props.user.has_yard === false && this.state.displayAnimal.size === 'medium') {
+            if (this.props.user.has_yard === false && this.state.displayAnimal.size === 'Medium') {
                 matchpoint += 1
             }
             if (this.props.user.has_cats === this.state.displayAnimal.environment.cats) {
