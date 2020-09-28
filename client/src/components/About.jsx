@@ -10,7 +10,7 @@ export default class About extends Component {
                     Welcome to the Rescue Match web-app! This app was created to match users with rescue animals that they may like.
                     </p><br></br>
                 <p>
-                    If you would like to register, please register <Link to='/register'>Here</Link>
+                    If you would like to give the web-app a try, please first register <Link to='/register'>Here</Link>
                 </p><br></br>
                 <h2>How to use this app</h2>
                 <p>
