@@ -108,6 +108,11 @@ header li{
   margin-right: 20px;
 }
 
+.home-page .home-nav {
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.50);
+}
+
 .home-page .animal-box{
   display: flex;
   flex-direction: column;

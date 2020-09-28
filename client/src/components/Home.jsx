@@ -244,7 +244,7 @@ export default class Home extends Component {
                         </div>
                     </div>
                     :
-                    <div>
+                    <div className="home-nav">
                         <h1>Welcome to Rescue Match</h1>
                         <div className="user-nav">
                             {/* <div> */}
