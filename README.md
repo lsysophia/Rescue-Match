@@ -65,13 +65,13 @@ The API needs user to request an access token that will expire every hour. The R
 ## Setup
 
 - Fork the project or download it in your machine
-- Create your database by running rails db:create
-- Run migration by running rails db:migrate
+- Make sure you have Ruby version 2.6.6 installed for this project
+- First time running the project, please run bundle install
+- Create your database by running bundle exec rails db:create
+- Run migration by running bundle exec rails db:migrate
 - Create .env file on the root level
 - Create a PetFinder account and request a ClientID and Secret from the provider
 - In the .env file, add your own Client_ID and Client_Secret that you requested from PetFinder
-- Make sure you have Ruby version 2.6.6 installed for this project
-- First time running the project, please run bundle install
 - To start the project locally, first start the rails server by running bundle exec rails s -p 3001
 - Then cd into the client folder for React front-end and run yarn start
 - You may access the jobs performed by Crono gem here: (https://sophia-li-rescue-match.herokuapp.com/crono/)
