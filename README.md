@@ -11,7 +11,7 @@ Deployed at: https://sophia-li-rescue-match.herokuapp.com/
 ![2 - 3xefBaL](https://user-images.githubusercontent.com/59341273/107974086-b0a20200-6f7b-11eb-9847-7af6ae89a99c.jpg)
 
 ## Schema:
-https://imgur.com/a/gabmmpC
+<img width="725" alt="Screen Shot 2020-09-27 at 15 11 25" src="https://user-images.githubusercontent.com/59341273/107974219-df1fdd00-6f7b-11eb-8b87-10d80918c481.png">
 
 
 ## Wireframe:
