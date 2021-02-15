@@ -6,7 +6,9 @@ This app was created to match users with rescue animals available in their area 
 Deployed at: https://sophia-li-rescue-match.herokuapp.com/ 
 
 ### App Screenshots
-https://imgur.com/a/ZQLejOK
+![1 - 1ESnPyn](https://user-images.githubusercontent.com/59341273/107974089-b13a9880-6f7b-11eb-8d46-4ee043b0bc4e.png)
+
+![2 - 3xefBaL](https://user-images.githubusercontent.com/59341273/107974086-b0a20200-6f7b-11eb-9847-7af6ae89a99c.jpg)
 
 ## Schema:
 https://imgur.com/a/gabmmpC
