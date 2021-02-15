@@ -15,7 +15,7 @@ Deployed at: https://sophia-li-rescue-match.herokuapp.com/
 
 
 ## Wireframe:
-https://wireframe.cc/Rw7yMu
+<img width="1141" alt="Screen Shot 2021-02-15 at 10 53 14" src="https://user-images.githubusercontent.com/59341273/107974319-07a7d700-6f7c-11eb-8005-6877d560e673.png">
 
 
 ## User Stories
