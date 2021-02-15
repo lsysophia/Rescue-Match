@@ -66,7 +66,7 @@ The API needs user to request an access token that will expire every hour. The R
 
 - Fork the project or download it in your machine
 - Create your database in psql
-- Create database, run the migration files and create tables from db/migrations
+- Run migration, rails db:migrate
 - Create .env file on the root level
 - Create a PetFinder account and request a ClientID and Secret from the provider
 - In the .env file, add your own Client_ID and Client_Secret that you requested from PetFinder
