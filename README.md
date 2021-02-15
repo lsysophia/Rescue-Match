@@ -66,7 +66,7 @@ The API needs user to request an access token that will expire every hour. The R
 
 - Fork the project or download it in your machine
 - Make sure you have Ruby version 2.6.6 installed for this project
-- First time running the project, please run bundle install
+- First time running the project, please run gem install bundler then run bundle install
 - Create your database by running bundle exec rails db:create
 - Run migration by running bundle exec rails db:migrate
 - Create .env file on the root level
